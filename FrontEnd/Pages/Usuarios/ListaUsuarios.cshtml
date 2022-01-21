@@ -1,0 +1,91 @@
+﻿@page
+@model MyApp.Namespace.ListaUsuariosModel
+@{
+    Layout = "_LayoutAdminSistema";
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Gestion de usuarios</h2>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-7">
+        <div class="border contenedor-filtro">
+            <form action="get" class="form-inline">
+                <div class="form-group col-md-2 text-center">
+                    <h3>Filtro</h3>
+                </div>
+                <div class="form-group col-md-4 text-center">
+                    <select asp-for="@Model.CriterioFiltro" class="form-control">
+                        <option selected>Todos los registros</option>
+                        <option>Por nombre de usuario</option>
+                        <option>Por correo</option>
+                        <option>Por nombre de rol</option>
+                        <option>Admin de sistema</option>
+                        <option>Admin de operativo</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 text-center">
+                    <input asp-for="@Model.TextoFiltro" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-2 text-center">
+                    <!--<input type="submit" value="Filtrar" class="btn btn-primary">-->
+                    <button type="submit" class="btn btn-primary" asp-route-criterio="@Model.CriterioFiltro" asp-route-filtro="@Model.TextoFiltro">
+                        Filtrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5 contenedor-btn-agregar">
+        <a class="btn btn-success boton-agregar" asp-page="./Agregar">
+            <i class="fas fa-user-plus"></i>
+            <span class="tooltip">Agregar usuario</span>
+        </a>
+    </div>
+</div>
+<br>
+<br>
+<div class="text-center" >
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>Nombre de usuario</th>
+            <th>Correo electronico</th>
+            <th>Rol</th>
+            <th>Tipo de usuario</th>
+            <th>Detalles</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+        </tr>
+        @foreach (var usuario in Model.Usuarios)
+        {
+            <tr>
+                <td>@usuario.NombreUsuario</td>
+                <td>@usuario.Correo</td>
+                <td>@Model.GetRol(usuario.RolId).Nombre</td>
+                @if(Model.GetRol(usuario.RolId).EsSuperAdmin){
+                    <td>Administrador del sistema</td>
+                }else
+                {
+                    <td>Administrador operativo</td>
+                }
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./Detalles" asp-route-IdUsuario="@usuario.Id">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-warning table-btn" asp-page="./Modificar" asp-route-IdUsuario="@usuario.Id">
+                        <i class="fas fa-user-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger table-btn" asp-page="./Eliminar" asp-route-IdUsuario="@usuario.Id">
+                        <i class="fas fa-user-times"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+    <br>
+    <h5>Existen @Model.Usuarios.Count() Usuarios en la base de datos</h5>
+</div>

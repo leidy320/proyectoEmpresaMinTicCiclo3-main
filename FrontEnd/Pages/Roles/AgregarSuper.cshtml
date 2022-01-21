@@ -1,0 +1,29 @@
+﻿@page
+@model FrontEnd.Pages.Roles.AgregarSuperModel
+@{
+    Layout = "_LayoutAdminSistema";
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Agregar Rol</h2>
+</div>
+<br>
+<div class="container border text-center">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="Rol.Id">
+        <div class="form-row">
+            <div class="form-group col-md-4"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="Rol.Nombre">Nombre del Rol</label>
+                <input asp-for="Rol.Nombre" class="form-control" placeholder="Nombre del rol">
+                <span class="text-danger" asp-validation-for="Rol.Nombre" style="width: 100%;"></span>
+            </div>
+        </div>
+        <div>
+            <a class="btn btn-primary table-btn" asp-page="./ListaRoles">
+                Volver
+            </a>
+            <input type="submit" value="Agregar" class="btn btn-success">
+        </div>
+    </form>
+</div>

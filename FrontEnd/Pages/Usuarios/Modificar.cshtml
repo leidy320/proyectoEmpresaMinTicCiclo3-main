@@ -1,0 +1,71 @@
+﻿@page
+@model MyApp.Namespace.ModificarModel
+@{
+    Layout = "_LayoutAdminSistema";
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Modificar Datos del usuario</h2>
+</div>
+<br>
+<div class="container border text-center">
+    @if (Model.UsuarioEncontrado)
+    {
+        <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="Usuario.Id">
+        <input type="hidden" asp-for="Rol.Id">
+        <input type="hidden" asp-for="Roles">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Usuario.NombreUsuario">Nombre de usuario</label>
+                <input asp-for="Usuario.NombreUsuario" class="form-control" placeholder="Nombre de usuario">
+                <span class="text-danger" asp-validation-for="Usuario.NombreUsuario" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Usuario.Correo">Correo electronico</label>
+                <input asp-for="Usuario.Correo" class="form-control" placeholder="Correo electronico">
+                <span class="text-danger" asp-validation-for="Usuario.Correo" style="width: 100%;"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="NombreRol">Elija el rol del usuario</label>
+                <select asp-for="NombreRol" class="form-control">
+                    <option selected>@Model.Rol.Nombre</option>
+                    @foreach (var rol in Model.Roles)
+                    {
+                        @if (Model.Rol.Nombre != rol.Nombre)
+                        {
+                            <option>@rol.Nombre</option>
+                        }
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="NombreRol" style="width: 100%;"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Usuario.Clave">Contraseña</label>
+                <input asp-for="Usuario.Clave" class="form-control" placeholder="Contraseña">
+                <span class="text-danger" asp-validation-for="Usuario.Clave" style="width: 100%;"></span>
+            </div>
+        </div>
+        <div>
+            <a class="btn btn-primary table-btn" asp-page="./ListaUsuarios">
+                Volver
+            </a>
+            <input type="submit" value="Modificar" class="btn btn-warning">
+        </div>
+    </form>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            Usuario no encontrado
+        </div>
+        <div>
+            <a class="btn btn-primary table-btn" asp-page="./ListaUsuarios">
+                Volver
+            </a>
+        </div>
+    }
+
+</div>

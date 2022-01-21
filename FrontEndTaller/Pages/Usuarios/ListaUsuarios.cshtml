@@ -1,0 +1,28 @@
+﻿@page
+@model MyApp.Namespace.ListaUsuariosModel
+@{
+}
+<h2>Usuarios</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Clave</th>
+        <th>ID rol</th>
+        <th>ID persona</th>
+    </tr>
+    @foreach(var usuario in Model.Usuarios)
+    {
+        <tr>
+            <td>@usuario.Id</td>
+            <td>@usuario.usuario</td>
+            <td>@usuario.clave</td>
+            <td>@usuario.RolId</td>
+            <td>@usuario.PersonaId</td>
+        </tr>
+    }
+</table>
+<br>
+<br>
+<h5>Existen @Model.Usuarios.Count() usuarios en la base de datos</h5>

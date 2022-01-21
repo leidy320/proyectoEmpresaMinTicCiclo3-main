@@ -1,0 +1,83 @@
+﻿@page
+@model FrontEnd.Pages.Clientes.EliminarModelCliente
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Eliminar cliente</h2>
+</div>
+<br>
+<div class="container border text-center">
+    @if (Model.ClienteEncontrado)
+    {
+        <table class="table">
+            <tr>
+                <th colspan="2">
+                    Datos del cliente
+                </th>
+            </tr>
+            <tr>
+                <th>Documento:</th>
+                <td>@Model.Persona.Documento</td>
+            </tr>
+            <tr>
+                <th>Nombres:</th>
+                <td>@Model.Persona.Nombre</td>
+            </tr>
+            <tr>
+                <th>Primer apellido:</th>
+                <td>@Model.Persona.PrimerApellido</td>
+            </tr>
+            <tr>
+                <th>Segundo apellido:</th>
+                <td>@Model.Persona.SegundoApellido</td>
+            </tr>
+            <tr>
+                <th>Fecha de nacimiento:</th>
+                <td>@Model.Persona.FechaNacimiento</td>
+            </tr>
+            <tr>
+                <th>Edad:</th>
+                <td>@Model.CalcularEdad(Model.Persona.FechaNacimiento)</td>
+            </tr>
+            <tr>
+                <th>Teléfono:</th>
+                <td>@Model.Cliente.Telefono</td>
+            </tr>
+            <tr>
+                <th>Empresa donde trabaja:</th>
+                <td>@Model.Empresa.RazonSocial</td>
+            </tr>
+            <tr>
+                <th>Nit de la empresa:</th>
+                <td>@Model.Empresa.Nit</td>
+            </tr>
+        </table>
+        <div class="alert alert-warning" role="alert">
+            Precaución: Eliminar el registro del cliente es una accion permanente<br>¿Desea eliminar el registro del
+            cliente?
+        </div>
+        <form method="post">
+            <div>
+                <a class="btn btn-primary table-btn" asp-page="./ListaClientes">
+                    Cancelar
+                </a>
+                <input type="submit" value="Eliminar" class="btn btn-danger">
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            No se encontro ese cliente
+        </div>
+        <br>
+        <br>
+        <br>
+        <div>
+            <a class="btn btn-primary table-btn" asp-page="./ListaClientes">
+                Volver
+            </a>
+        </div>
+    }
+</div>

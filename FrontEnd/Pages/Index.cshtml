@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="text-center tiulo-dash" style="padding-top: 2%;">
+    <h1>Dashboard del Administrador operativo</h1>
+</div>
+<div class="text-center tiulo-dash">
+    <h3>Bienvenido @User.Identity.Name</h3>
+    <h5>Fecha y hora local: @DateTime.Now</h5>
+</div>
+<br>
+<div class="container">
+    <div class="row text-justify">
+        <dl>
+        <dd>En el menú lateral puedes ver las diferentes opciones para realizar la gestion de empresas y personal asociado a estas. </dd>
+        <dd>Te recomendamos tener en cuenta las siguientes opciones:</dd>
+        <dd><i class='bx bx-menu btn-tuto'></i>Haz clic en el botón para ver con mas detalle las opciones disponibles.</dd>
+        <dd><i class='bx bx-grid-alt btn-tuto'></i>Haz clic en este botón para ver esta vista (Principal).</dd>
+        <dd><i class='bx bx-cog btn-tuto'></i></i>Haz clic en este botón para ver la configuración, donde podrás cambiar tu contraseña.</dd>
+        <p>En la gestión de cada una de las empresas o personal asociado a estas, verás un listado de todos los registros. Si se desea 
+        también puedes filtrar los registros por algunas características individuales de las empresas, clientes o empleados.</p>
+        </dl>    
+    </div>
+</div>

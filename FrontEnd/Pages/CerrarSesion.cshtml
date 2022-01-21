@@ -1,0 +1,17 @@
+﻿@page
+@model FrontEnd.Pages.CerrarSesionModel
+@{
+    Layout = "_LayoutAdmin";
+}
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <span class="text-center">
+            <h1>CERRANDO SESIÓN....</h1>
+        </span>
+    }
+    else
+    {
+        <p>You have successfully logged out of the application.</p>
+    }
+}

@@ -1,0 +1,106 @@
+﻿@page
+@model MyApp.Namespace.DetallesModel
+@{
+    Layout = "_LayoutAdminSistema";
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Detalles de usuario</h2>
+</div>
+<br>
+<div class="container border text-center">
+    @if(Model.UsuarioEncontrado){
+        <table class="table">
+        <tr>
+            <th colspan="2">
+                Datos del usuario
+            </th>
+        </tr>
+        <tr>
+            <th>Nombre de usuario:</th>
+            <td>@Model.Usuario.NombreUsuario</td>
+        </tr>
+        <tr>
+            <th>Correo electronico:</th>
+            <td>@Model.Usuario.Correo</td>
+        </tr>
+        <tr>
+            <th>Rol:</th>
+            <td>@Model.Rol.Nombre</td>
+        </tr>
+        <tr>
+            <th>Tipo de usuario:</th>
+            @if(Model.Rol.EsSuperAdmin)
+            {
+                <td>Administrador del sistema</td>
+            }
+            else
+            {
+                <td>Administrador operativo</td>
+            }
+            
+        </tr>
+        <tr>
+            <th colspan="2">
+                Permisos
+            </th>
+        </tr>
+        <tr>
+            <th>Ingresar:</th>
+            @if(Model.Rol.Ingresar)
+            {
+                <td class="text-success"><b>SI</b></td>
+            }
+            else
+            {
+                <td class="text-danger"><b>NO</b></td>
+            }
+        </tr>
+        <tr>
+            <th>Modificar:</th>
+            @if(Model.Rol.Modificar)
+            {
+                <td class="text-success"><b>SI</b></td>
+            }
+            else
+            {
+                <td class="text-danger"><b>NO</b></td>
+            }
+        </tr>
+        <tr>
+            <th>Consultar:</th>
+            @if(Model.Rol.Consultar)
+            {
+                <td class="text-success"><b>SI</b></td>
+            }
+            else
+            {
+                <td class="text-danger"><b>NO</b></td>
+            }
+        </tr>
+        <tr>
+            <th>Eliminar:</th>
+            @if(Model.Rol.Eliminar)
+            {
+                <td class="text-success"><b>SI</b></td>
+            }
+            else
+            {
+                <td class="text-danger"><b>NO</b></td>
+            }
+        </tr>
+    </table>
+    }
+    else{
+        <div class="alert alert-danger" role="alert">
+            No se encontro ese usuario
+        </div>
+        <br>
+        <br>
+        <br>
+    }
+    <div>
+        <a class="btn btn-primary table-btn" asp-page="./ListaUsuarios">
+            Volver
+        </a>
+    </div>
+</div>

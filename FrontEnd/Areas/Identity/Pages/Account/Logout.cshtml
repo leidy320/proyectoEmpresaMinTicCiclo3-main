@@ -1,0 +1,18 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Log out";
+}
+<h1>@ViewData["Title"]</h1>
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <span class="text-center">
+            <h1>CERRANDO SESIÓN....</h1>
+        </span>
+    }
+    else
+    {
+        <p>You have successfully logged out of the application.</p>
+    }
+}

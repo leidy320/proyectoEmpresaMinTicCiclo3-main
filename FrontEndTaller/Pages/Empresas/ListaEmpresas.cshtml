@@ -1,0 +1,27 @@
+﻿@page
+@model MyApp.Namespace.ListaEmpresasModel
+@{
+}
+<h1 class="text-center">Listado de entidades de la tabla Empresa</h1>
+<br>
+<br>
+<table class="table">
+    <tr>
+        <td><h4>ID</h4></td>
+        <td><h4>RAZON SOCIAL</h4></td>
+        <td><h4>NIT</h4></td>
+        <td><h4>DIRECCIÓN</h4></td>
+    </tr>
+    @foreach(var empresa in Model.Empresas)
+    {
+        <tr>
+            <td>@empresa.Id</td>
+            <td>@empresa.RazonSocial</td>
+            <td>@empresa.Nit</td>
+            <td>@empresa.Direccion</td>
+        </tr>
+    }
+</table>
+<br>
+<br>
+<h5>Existen @Model.Empresas.Count() Empresas en la base de datos</h5>

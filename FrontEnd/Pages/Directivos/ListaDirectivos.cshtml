@@ -1,0 +1,89 @@
+﻿@page
+@model FrontEnd.Pages.Directivos.ListaDirectivosModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Gestion de empleados Directivo</h2>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-7">
+        <div class="border contenedor-filtro">
+            <form action="get" class="form-inline">
+                <div class="form-group col-md-2 text-center">
+                    <h3>Filtro</h3>
+                </div>
+                <div class="form-group col-md-4 text-center">
+                    <select id="selectFiltro" asp-for="@Model.CriterioFiltro" class="form-control" onchange="actualizar_form()">
+                        <option selected>Todos los registros</option>
+                        <option>Por categoria</option>
+                       
+                    </select>
+                </div>
+                <div class="form-group col-md-4 text-center">
+                    <input id="inputFiltro" asp-for="@Model.TextoFiltro" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-2 text-center">
+                    <!--<input type="submit" value="Filtrar" class="btn btn-primary">-->
+                    <button id="botonFiltro" type="submit" class="btn btn-primary" asp-route-criterio="@Model.CriterioFiltro"
+                        asp-route-filtro="@Model.TextoFiltro">
+                        Filtrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5 contenedor-btn-agregar">
+        <a class="btn btn-success boton-agregar" asp-page="./Agregar">
+            <i class="fas fa-user-plus"></i>
+            <span class="tooltip">Agregar directivo</span>
+        </a>
+    </div>
+</div>
+
+<br>
+<br>
+<div class="text-center" >
+    <table class="table table-hover">
+        <tr>
+            <th>Nombre completo</th>
+            <th>Documento</th>
+            <th>Edad</th>
+            <th>Sueldo bruto</th>
+            <th>Categoria</th>
+            <th>Empresa</th>
+            <th>Detalles</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+        </tr>
+        @foreach (var directivo in Model.Directivos)
+        {
+            <tr>
+                <td>@Model.GetPersona(@Model.GetEmpleado(directivo.EmpleadoId).PersonaId).Nombre @Model.GetPersona(@Model.GetEmpleado(directivo.EmpleadoId).PersonaId).PrimerApellido @Model.GetPersona(@Model.GetEmpleado(directivo.EmpleadoId).PersonaId).SegundoApellido</td>
+                <td>@Model.GetPersona(@Model.GetEmpleado(directivo.EmpleadoId).PersonaId).Documento</td>
+                <td>@Model.CalcularEdad(Model.GetPersona(@Model.GetEmpleado(directivo.EmpleadoId).PersonaId).FechaNacimiento)</td>
+                <td>@Model.GetEmpleado(directivo.EmpleadoId).SueldoBruto</td>
+                <td>@directivo.Categoria</td>
+                <td>@Model.GetNombreEmpresa(Model.GetPersona(@Model.GetEmpleado(directivo.EmpleadoId).PersonaId).EmpresaId)</td>
+                <td>
+                    <a class="btn btn-primary table-btn" asp-page="./Detalles" asp-route-IdDirectivo="@directivo.Id">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-warning table-btn" asp-page="./Modificar" asp-route-IdDirectivo="@directivo.Id">
+                        <i class="fas fa-user-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger table-btn" asp-page="./Eliminar" asp-route-IdDirectivo="@directivo.Id">
+                        <i class="fas fa-user-times"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+    <br>
+    <h5>Existen @Model.Directivos.Count() Directivos en la base de datos</h5>
+</div>

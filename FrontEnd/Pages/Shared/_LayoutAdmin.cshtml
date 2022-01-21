@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Dashboard de Administrador del sistema</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+</head>
+
+<body onload="onLoad()">
+    <div>
+        <header>
+            <nav class="navbar border-bottom encabezado">
+                <div class="container">
+                    <h1>Dashboard de Administrador Operativo</h1>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <div class="sidebar">
+                <div class="logo-details">
+                    <i class='bx bx-ghost icon'></i>
+                    <div class="logo_name">Administrador Operativo</div>
+                    <i class='bx bx-menu' id="boton-sidebar"></i>
+                </div>
+                <div class="side-usuario">
+                    <i class='bx bxs-user'></i>
+                    <span class="links_name">@User.Identity.Name</span>
+                </div>
+                <ul class="nav-list">
+                    <li>
+                        <a asp-page="/Index">
+                            <i class='bx bx-grid-alt'></i>
+                            <span class="links_name">Principal</span>
+                        </a>
+                        <span class="tooltip">Principal</span>
+                    </li>
+                    <li>
+                        <a asp-page="/Empresas/List">
+                            <i class='bx bxs-factory'></i>
+                            <span class="links_name">Gestión de Empresas</span>
+                        </a>
+                        <span class="tooltip">Gestión de Empresas</span>
+                    </li>
+                    <li>
+                        <a asp-page="/Empleados/ListaEmpleados">
+                            <i class='bx bx-group'></i>
+                            <span class="links_name">Gestión de Empleados</span>
+                        </a>
+                        <span class="tooltip">Gestión de Empleados</span>
+                    </li>
+                    <li>
+                        <a asp-page="/Directivos/ListaDirectivos">
+                            <i class='bx bxs-user-badge'></i>
+                            <span class="links_name">Gestión de Directivos</span>
+                        </a>
+                        <span class="tooltip">Gestión de Directivos</span>
+                    </li>
+                    <li>
+                        <a asp-page="/Clientes/ListaClientes">
+                            <i class='bx bx-face'></i>
+                            <span class="links_name">Gestión de Clientes</span>
+                        </a>
+                        <span class="tooltip">Gestión de Clientes</span>
+                    </li>
+                    <li>
+                        <a asp-page="/UsuarioActivo/Cuenta">
+                            <i class='bx bx-cog'></i>
+                            <span class="links_name">Configuración</span>
+                        </a>
+                        <span class="tooltip">Configuración</span>
+                    </li>
+
+                    <li class="profile">
+                        <a asp-page="/CerrarSesion">
+                            <i class='bx bx-log-out' id="log_out"></i>
+                            <span class="links_name">Cerrar sesión</span>
+                        </a>
+                        <span class="tooltip">Cerrar sesión</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <section class="home-section">
+
+                    @RenderBody()
+
+            </section>
+            <div class="footer text-muted navbar pie">
+                <div class="container text-center">
+                    <h5>Desarrollado por Team D Desarrolladores - 2021 &copy;</h5>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/funciones.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/50ff11670d.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

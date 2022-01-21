@@ -1,0 +1,25 @@
+﻿@page
+@model MyApp.Namespace.ListaClientesModel
+@{
+}
+<h1 class="text-center">Listado de entidades de la tabla Cliente</h1>
+<br>
+<br>
+<table class="table">
+    <tr>
+        <td><h4>ID</h4></td>
+        <td><h4>TELEFONO</h4></td>
+        <td><h4>ID FORANEA DE PERSONA</h4></td>
+    </tr>
+    @foreach(var cliente in Model.Clientes)
+    {
+        <tr>
+            <td>@cliente.Id</td>
+            <td>@cliente.Telefono</td>
+            <td>@cliente.PersonaId</td>
+        </tr>
+    }
+</table>
+<br>
+<br>
+<h5>Existen @Model.Clientes.Count() clientes en la base de datos</h5>

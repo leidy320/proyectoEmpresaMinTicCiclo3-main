@@ -1,0 +1,27 @@
+﻿@page
+@model MyApp.Namespace.ListaDirectivosModel
+@{
+}
+<h1 class="text-center">Listado de entidades de la tabla Directivo</h1>
+<br>
+<br>
+<table class="table">
+    <tr>
+        <td><h4>ID</h4></td>
+        <td><h4>CATEGORIA</h4></td>
+        <td><h4>EMPLEADOID</h4></td>
+     
+    </tr>
+    @foreach(var directivo in Model.Directivos)
+    {
+        <tr>
+            <td>@directivo.Id</td>
+            <td>@directivo.Categoria</td>
+            <td>@directivo.EmpleadoId</td>
+        
+        </tr>
+    }
+</table>
+<br>
+<br>
+<h5>Existen @Model.Directivos.Count() Directivos en la base de datos</h5>

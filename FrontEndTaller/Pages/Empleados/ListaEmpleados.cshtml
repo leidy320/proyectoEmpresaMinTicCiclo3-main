@@ -1,0 +1,25 @@
+﻿@page
+@model MyApp.Namespace.ListaEmpleadosModel
+@{
+}
+<h1 class="text-center">Listado de entidades de la tabla Empleado</h1>
+<br>
+<br>
+<table class="table">
+    <tr>
+        <td><h4>ID</h4></td>
+        <td><h4>Sueldo Bruto</h4></td>
+        <td><h4>ID Persona</h4></td>
+    </tr>
+    @foreach(var empleado in Model.Empleados)
+    {
+        <tr>
+            <td>@empleado.Id</td>
+            <td>@empleado.SueldoBruto</td>
+            <td>@empleado.PersonaId</td>
+        </tr>
+    }
+</table>
+<br>
+<br>
+<h5>Existen @Model.Empleados.Count() Empleados en la base de datos</h5>

@@ -1,0 +1,101 @@
+﻿@page
+@model proyectoEmpresaMinTicCiclo3.FrontEnd.Pages.ListModel
+@{
+    Layout = "_LayoutAdmin";
+}
+
+    <header>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-4">
+                <h2>Gestión empresas</h2>
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="border contenedor-filtro">
+                    <form action="get" class="form-inline">
+                        <div class="form-group col-md-2 text-center">
+                            <h3>Filtro</h3>
+                        </div>
+                        <div class="form-group col-md-4 text-center">
+                            <select id="selectFiltro" asp-for="@Model.CriterioFiltro" class="form-control" onchange="actualizar_form()">
+                                <option value="1" selected>Todos los registros</option>
+                                <option value="2">Por nit</option>
+                                <option value="3">Por razón social</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 text-center">
+                            <input id="inputFiltro" asp-for="@Model.TextoFiltro" type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-md-2 text-center">
+                            <!--<input type="submit" value="Filtrar" class="btn btn-primary">-->
+                            <button id="botonFiltro" type="submit" class="btn btn-primary" asp-route-criterio="@Model.CriterioFiltro" asp-route-filtro="@Model.TextoFiltro">
+                                Filtrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5 contenedor-btn-agregar">
+                <a class="btn btn-success boton-agregar" asp-page="./Create">
+                    <i class="fas fa-plus-circle"></i>
+                    <span class="tooltip">Agregar empresa</span>
+                </a>
+            </div>
+        </div>
+        <br>
+    </header>
+    <main>
+        <div class="row">
+            <table class="table table-bordered">
+                    <tr>
+                        <th>Nit</th>
+                        <th>Razón social</th>
+                        <th>Dirección</th>
+                        <th>Detalles</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+
+                    </tr>
+                <tbody>
+                @foreach (var empresa in Model.Empresas)
+                {
+                    <tr>
+                        <td>@empresa.Nit</td>
+                        <td>@empresa.RazonSocial</td>
+                        <td>@empresa.Direccion</td>
+                        <td class="text-center">
+                            <a class="btn btn-secondary table-btn" asp-page="./Details" asp-route-empresaId="@empresa.Id">
+                                <i class="fas fa-search"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-primary table-btn" asp-page="./Edit" asp-route-empresaId="@empresa.Id">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-danger table-btn" asp-page="./Delete" asp-route-empresaId="@empresa.Id">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3">
+            <h5>Existe(n) @Model.Cantidad empresa(s) en la base de datos.</h5>
+        </div>
+        <!-- Copyright -->
+    </footer>

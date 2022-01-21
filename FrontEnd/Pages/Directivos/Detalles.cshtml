@@ -1,0 +1,69 @@
+﻿@page
+@model FrontEnd.Pages.Directivos.InfoModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Detalles de empleado Directivo</h2>
+</div>
+<br>
+<div class="container border text-center">
+    @if(Model.DirectivoEncontrado){
+        <table class="table">
+        <tr>
+            <th colspan="2">
+                Datos del empleado directivo
+            </th>
+        </tr>
+        <tr>
+            <th>Documento:</th>
+            <td>@Model.Persona.Documento</td>
+        </tr>
+        <tr>
+            <th>Nombre:</th>
+            <td>@Model.Persona.Nombre</td>
+        </tr>
+        <tr>
+            <th>Primer apellido:</th>
+            <td>@Model.Persona.PrimerApellido</td>
+        </tr>
+        <tr>
+            <th>Segundo apellido:</th>
+            <td>@Model.Persona.SegundoApellido</td>
+        </tr>
+        <tr>
+            <th>Fecha de nacimiento:</th>
+            <td>@Model.Persona.FechaNacimiento</td>
+        </tr>
+        <tr>
+            <th>Sueldo:</th>
+            <td>@Model.Empleado.SueldoBruto</td>
+        </tr>
+        <tr>
+            <th>Categoria:</th>
+            <td>@Model.Directivo.Categoria</td>
+        </tr>
+        <tr>
+            <th>Empresa donde trabaja:</th>
+            <td>@Model.Empresa.RazonSocial</td>
+        </tr>
+        <tr>
+            <th>Nit de la empresa:</th>
+            <td>@Model.Empresa.Nit</td>
+        </tr>
+    </table>
+    }
+    else{
+        <div class="alert alert-danger" role="alert">
+            No se encontro ese Directivo
+        </div>
+        <br>
+        <br>
+        <br>
+    }
+    <div>
+        <a class="btn btn-primary table-btn" asp-page="./ListaDirectivos">
+            Volver
+        </a>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+﻿@page
+@model proyectoEmpresaMinTicCiclo3.FrontEnd.Pages.EditModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<div>
+
+    <header>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-4">
+                <h2>Editar empresa</h2>
+            </div>
+            <div class="col-4">
+
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container align-content-center">
+            <form method="POST">
+                <div class="row">
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <input asp-for="Empresa.Id" type="hidden" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="Empresa.Nit"></label>
+                            <input asp-for="Empresa.Nit" class="form-control">
+                            <span class="text-danger" asp-validation-for="Empresa.Nit"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="Empresa.RazonSocial"></label>
+                            <input asp-for="Empresa.RazonSocial" class="form-control">
+                            <span class="text-danger" asp-validation-for="Empresa.RazonSocial"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="Empresa.Direccion"></label>
+                            <input asp-for="Empresa.Direccion" class="form-control">
+                            <span class="text-danger" asp-validation-for="Empresa.Direccion"></span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-3">
+                        <div>
+                            <button type="submit" class="btn btn-success">
+                                Actualizar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div>
+                            <a class="btn btn-primary" asp-page="./List">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-3">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</div>

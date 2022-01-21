@@ -1,0 +1,32 @@
+﻿@page
+@model MyApp.Namespace.ListaRolesModel
+@{
+}
+<h1 class="text-center">Listado de entidades de la tabla Rol</h1>
+<br>
+<br>
+<table class="table">
+    <tr>
+        <td><h4>ID</h4></td>
+        <td><h4>Ingresar</h4></td>
+        <td><h4>Modificar</h4></td>
+        <td><h4>Consultar</h4></td>
+        <td><h4>Eliminar</h4></td>
+        <td><h4>Estado</h4></td>
+    </tr>
+    @foreach(var rol in Model.Roles)
+    {
+        <tr>
+            <td>@rol.Id</td>
+            <td>@rol.Nombre</td>
+            <td>@rol.Ingresar</td>
+            <td>@rol.Modificar</td>
+            <td>@rol.Consultar</td>
+            <td>@rol.Eliminar</td>
+            <td>@rol.Estado</td>
+        </tr>
+    }
+</table>
+<br>
+<br>
+<h5>Existen @Model.Roles.Count() roles en la base de datos</h5>

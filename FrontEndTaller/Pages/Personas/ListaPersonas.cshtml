@@ -1,0 +1,33 @@
+﻿@page
+@model MyApp.Namespace.ListaPersonasModel
+@{
+}
+<h2>Personas</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Primer apellido</th>
+        <th>Segundo apellido</th>
+        <th>Fecha nacimiento</th>
+        <th>Documento</th>
+        <th>ID empresa</th>
+     
+    </tr>
+    @foreach(var persona in Model.Personas)
+    {
+        <tr>
+            <td>@persona.Id</td>
+            <td>@persona.Nombre</td>
+            <td>@persona.PrimerApellido</td>
+            <td>@persona.SegundoApellido</td>
+            <td>@persona.FechaNacimiento</td>
+            <td>@persona.Documento</td>
+            <td>@persona.EmpresaId</td>
+        </tr>
+    }
+</table>
+<br>
+<br>
+<h5>Existen @Model.Personas.Count() personas en la base de datos</h5>

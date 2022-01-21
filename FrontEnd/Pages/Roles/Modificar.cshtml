@@ -1,0 +1,68 @@
+﻿@page
+@model FrontEnd.Pages.Roles.ModificarModel
+@{
+    Layout = "_LayoutAdminSistema";
+}
+<div class="text-center" style="padding-top: 2%;">
+    <h2>Modificar Datos del Rol</h2>
+</div>
+<br>
+<div class="container border text-center">
+    @if (Model.RolEncontrado)
+    {
+        <form method="post">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <input type="hidden" asp-for="Rol.Id">
+            <div class="form-row">
+                <div class="form-group col-md-4"></div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Rol.Nombre">Nombre del Rol</label>
+                    <input asp-for="Rol.Nombre" class="form-control" placeholder="Nombre del rol">
+                    <span class="text-danger" asp-validation-for="Rol.Nombre" style="width: 100%;"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <h3 class="text-center">Permisos del rol</h3>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Rol.Ingresar">Ingresar</label>
+                    <input asp-for="Rol.Ingresar" class="form-control">
+                    <span class="text-danger" asp-validation-for="Rol.Ingresar" style="width: 100%;"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Rol.Modificar">Modificar</label>
+                    <input asp-for="Rol.Modificar" class="form-control">
+                    <span class="text-danger" asp-validation-for="Rol.Modificar" style="width: 100%;"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Rol.Consultar">Consultar</label>
+                    <input asp-for="Rol.Consultar" class="form-control">
+                    <span class="text-danger" asp-validation-for="Rol.Consultar" style="width: 100%;"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Rol.Eliminar">Eliminar</label>
+                    <input asp-for="Rol.Eliminar" class="form-control">
+                    <span class="text-danger" asp-validation-for="Rol.Eliminar" style="width: 100%;"></span>
+                </div>
+            </div>
+            <div>
+                <a class="btn btn-primary table-btn" asp-page="./ListaRoles">
+                    Volver
+                </a>
+                <input type="submit" value="Modificar" class="btn btn-warning">
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            Rol no encontrado
+        </div>
+        <div>
+            <a class="btn btn-primary table-btn" asp-page="./ListaRoles">
+                Volver
+            </a>
+        </div>
+    }
+</div>
